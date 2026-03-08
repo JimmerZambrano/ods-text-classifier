@@ -1,7 +1,14 @@
-<<<<<<< HEAD
-# MAIA-4211_202611_MLNS_Deploy
-Plantilla para carga de la información de MAIA
-=======
 # ods-text-classifier
-Streamlit app for classifying Sustainable Development Goals (ODS) using NLP.
->>>>>>> d759a349151e2db9e9ecc5de0180cfbd7d0a0655
+
+Aplicación en Streamlit para clasificar textos en los Objetivos de Desarrollo Sostenible (ODS) utilizando NLP.
+
+## Descripción
+
+Esta aplicación permite ingresar un texto y el modelo predice a qué ODS pertenece.
+
+## Tecnologías utilizadas
+
+- Python
+- Scikit-learn
+- SpaCy
+- Streamlit
