@@ -22,7 +22,7 @@ class ModelController:
         sys.modules["__main__"].TextPreprocessor = TextPreprocessor
 
         MODEL_ID = "1ilRZddw1cMuLOCMjI8x14p8MUZlqfrFy"
-        MODEL_PATH = "ods_text_classifier_pipeline.joblib"
+        MODEL_PATH = "ods_text_classifier_pipeline_v2.joblib"
 
         # Descargar modelo si no existe
         if not os.path.exists(MODEL_PATH):
