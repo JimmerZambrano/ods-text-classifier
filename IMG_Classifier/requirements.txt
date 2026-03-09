@@ -6,4 +6,4 @@ matplotlib
 joblib
 gdown
 altair==4.2.2
-pillow==11.1.0
+pillow==10.3.0
