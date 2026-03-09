@@ -5,3 +5,4 @@ pandas
 joblib
 gdown
 altair==4.2.2
+pillow>=11.0.0
