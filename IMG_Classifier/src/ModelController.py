@@ -2,22 +2,21 @@
 import pathlib
 import platform
 
+# Fix for models saved in Windows and loaded in Linux
 if platform.system() != "Windows":
     pathlib.WindowsPath = pathlib.PosixPath
+
 import joblib
 import os
 import sys
-import pathlib
 import gdown
 
 from IMG_Classifier.src.DataPreprocessing import TextPreprocessor
 
+
 class ModelController:
 
     def __init__(self):
-
-        # arreglar paths de Colab (Linux) en Windows
-        pathlib.PosixPath = pathlib.WindowsPath
 
         # registrar la clase para joblib
         sys.modules["__main__"].TextPreprocessor = TextPreprocessor
