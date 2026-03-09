@@ -1,8 +1,8 @@
 # We ensure proper path handling in Python
-import Definitions
+from IMG_Classifier import Definitions
 import streamlit as st
 
-from src.ModelController import ModelController
+from IMG_Classifier.src.ModelController import ModelController
 
 ### Setup and configuration
 
@@ -30,7 +30,6 @@ if st.button("Clasificar"):
     if texto.strip() == "":
         st.warning("Por favor ingrese un texto")
     else:
-        # llamar al modelo
         pred = ctrl.predict_text(texto)
 
         st.success(f"ODS predicho: {pred}")
