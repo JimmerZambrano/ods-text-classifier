@@ -1,11 +1,10 @@
 import pathlib
-import platform
 
-# Fix cross-platform pickle paths (Windows ↔ Linux)
-if platform.system() != "Windows":
-    pathlib.WindowsPath = pathlib.PosixPath
-else:
-    pathlib.PosixPath = pathlib.WindowsPath
+# Fix for loading models saved in Windows on Linux
+class FakeWindowsPath(pathlib.PosixPath):
+    pass
+
+pathlib.WindowsPath = FakeWindowsPath
 
 import joblib
 import os
@@ -19,7 +18,7 @@ class ModelController:
 
     def __init__(self):
 
-        # Registrar la clase personalizada para que joblib pueda deserializarla
+        # Registrar la clase personalizada para joblib
         sys.modules["__main__"].TextPreprocessor = TextPreprocessor
 
         MODEL_ID = "1ilRZddw1cMuLOCMjI8x14p8MUZlqfrFy"
