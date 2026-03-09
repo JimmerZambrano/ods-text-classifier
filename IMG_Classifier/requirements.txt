@@ -2,8 +2,6 @@ streamlit==1.39.0
 scikit-learn
 numpy
 pandas
-matplotlib
 joblib
 gdown
 altair==4.2.2
-pillow==10.3.0
