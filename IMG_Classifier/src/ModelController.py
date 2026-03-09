@@ -2,6 +2,7 @@ import joblib
 import os
 import sys
 import pathlib
+import gdown
 
 from src.DataPreprocessing import TextPreprocessor
 
@@ -16,14 +17,15 @@ class ModelController:
         # registrar la clase para joblib
         sys.modules["__main__"].TextPreprocessor = TextPreprocessor
 
-        model_path = os.path.join(
-            "IMG_Classifier",
-            "resources",
-            "models",
-            "ods_text_classifier_pipeline.joblib"
-        )
+        MODEL_ID = "1ilRZddw1cMuLOCMjI8x14p8MUZlqfrFy"
+        MODEL_PATH = "ods_text_classifier_pipeline.joblib"
 
-        self.model = joblib.load(model_path)
+        # descargar modelo si no existe
+        if not os.path.exists(MODEL_PATH):
+            url = f"https://drive.google.com/uc?id={MODEL_ID}"
+            gdown.download(url, MODEL_PATH, quiet=False)
+
+        self.model = joblib.load(MODEL_PATH)
 
 
     def predict_text(self, text):
