@@ -1,8 +1,8 @@
-joblib
-matplotlib
+streamlit==1.39.0
+scikit-learn
 numpy
 pandas
-scikit-learn
-streamlit
+matplotlib
+joblib
 gdown
 altair==4.2.2
