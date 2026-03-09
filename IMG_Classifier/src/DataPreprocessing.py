@@ -13,9 +13,7 @@ class DataPreprocessing:
 
     def get_columns(self):
         print("DataPreprocessing.get_columns ->")
-        #TO-DO: Genera los nombres de las columnas en una lista para la variable res
         res = []
-
         return set(res)
 
     def get_cat_name(self, index):
@@ -23,7 +21,8 @@ class DataPreprocessing:
         if index < 0 or index > 1:
             return ""
         return self.get_categories()[index]
-    
+
+
 from sklearn.base import BaseEstimator, TransformerMixin
 import spacy
 from nltk.corpus import stopwords as nltk_stopwords
@@ -33,7 +32,11 @@ class TextPreprocessor(BaseEstimator, TransformerMixin):
 
     def __init__(self):
 
-        self.nlp = spacy.load("es_core_news_sm", disable=["parser","ner","textcat"])
+        # spaCy se cargará automáticamente si no existe
+        self.nlp = None
+
+        # cargar spaCy
+        self._load_spacy()
 
         spacy_stopwords = self.nlp.Defaults.stop_words
         nltk_stopwords_es = set(nltk_stopwords.words("spanish"))
@@ -43,7 +46,20 @@ class TextPreprocessor(BaseEstimator, TransformerMixin):
         self.custom_stopwords = (spacy_stopwords | nltk_stopwords_es) - words_to_keep
 
 
+    def _load_spacy(self):
+
+        if self.nlp is None:
+            self.nlp = spacy.load(
+                "es_core_news_sm",
+                disable=["parser", "ner", "textcat"]
+            )
+
+
     def preprocess_text(self, text):
+
+        # asegurar que spaCy esté cargado
+        if self.nlp is None:
+            self._load_spacy()
 
         doc = self.nlp(text.lower())
 
