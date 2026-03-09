@@ -4,8 +4,7 @@ import sys
 import pathlib
 import gdown
 
-from src.DataPreprocessing import TextPreprocessor
-
+from IMG_Classifier.src.DataPreprocessing import TextPreprocessor
 
 class ModelController:
 
