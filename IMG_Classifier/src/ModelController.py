@@ -1,3 +1,9 @@
+
+import pathlib
+import platform
+
+if platform.system() != "Windows":
+    pathlib.WindowsPath = pathlib.PosixPath
 import joblib
 import os
 import sys
